@@ -1,0 +1,5 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{% block title %}Burbucola{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}"></head><body>
+<header class="nav"><a class="logo" href="{{ url_for('home') }}">BURBUCOLA</a><nav class="navlinks"><a href="{{ url_for('home') }}">Empresa</a><a href="{{ url_for('documents') }}">Documentos</a>{% if student %}<span>👷 {{student}}</span><a href="{{ url_for('student_logout') }}" class="pill light">Salir</a>{% else %}<a href="{{ url_for('student_login') }}">Área trabajadores</a>{% endif %}{% if teacher %}<a href="{{ url_for('dashboard') }}" class="pill">Panel MJA</a><a href="{{ url_for('teacher_logout') }}">Salir</a>{% endif %}</nav></header>
+{% with messages=get_flashed_messages() %}{% for m in messages %}<div class="wrap" style="padding-bottom:0"><div class="flash">{{m}}</div></div>{% endfor %}{% endwith %}
+{% block content %}{% endblock %}
+<footer class="footer"><span>© Burbucola · Empresa ficticia docente</span><a href="{{ url_for('privacy') }}">Privacidad</a></footer></body></html>
